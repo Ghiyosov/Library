@@ -30,7 +30,7 @@ public class BookServices
     {
         using var connect = new NpgsqlConnection(_conectionString);
         connect.Execute("delete from genrebook as gb where gb.bookid=@id;", new { Id = id });
-        connect.Execute("delete from authorbook as ab where ab.bookid=@id;",new { Id = id });
+        connect.Execute("delete from authorbook as ab where ab.bookid=@id;", new { Id = id });
         connect.Execute(
             "delete from books where id = @id;", new { Id = id }
             );
@@ -39,24 +39,35 @@ public class BookServices
     public void AddBookAuthor(AuthorBook authorBook)
     {
         using var connect = new NpgsqlConnection(_conectionString);
-        connect.Execute("insert into authorbook(authorid,bookid) values(@authorid,bookid)",authorBook);
+        connect.Execute("insert into authorbook(authorid,bookid) values(@authorid,bookid)", authorBook);
     }
     public void AddBookGenre(GenreBook genreBook)
     {
         using var connect = new NpgsqlConnection(_conectionString);
-        connect.Execute("insert into genrebook(genreid,bookid) values(@genreid,bookid)",genreBook);
+        connect.Execute("insert into genrebook(genreid,bookid) values(@genreid,bookid)", genreBook);
     }
 
     public List<string> GetBookGenre(int id)
     {
         using var connect = new NpgsqlConnection(_conectionString);
-        var result = connect.Query<string>("select g.name from genrebook as gb join genre as g on gb.genreid=g.id join books as b on gb.bookid=b.id where b.id=@id", new{Id = id}).ToList();
+        var result = connect.Query<string>("select g.name from genrebook as gb join genre as g on gb.genreid=g.id join books as b on gb.bookid=b.id where b.id=@id", new { Id = id }).ToList();
         return result;
     }
     public List<string> GetBookAuthor(int id)
     {
         using var connect = new NpgsqlConnection(_conectionString);
-        var result = connect.Query<string>("select a.fullname from authorbook as ab join authors as a on ab.authorid=a.id join books as b on ab.bookid=b.id where b.id=@id", new{Id = id}).ToList();
+        var result = connect.Query<string>("select a.fullname from authorbook as ab join authors as a on ab.authorid=a.id join books as b on ab.bookid=b.id where b.id=@id", new { Id = id }).ToList();
         return result;
     }
+
+    public int CountBook()
+    {
+        using var connect = new NpgsqlConnection(_conectionString);
+        var sql =
+    }
+
+
+
 }
+
+

@@ -29,7 +29,8 @@ public class AuthorServices
      public void DeleteAuthors(int id)
     {
         using var connect = new NpgsqlConnection(_conectionString);
-        connect.Execute("delete from authors where id = @id; dalete from authorbook where id=authors.id", new {Id = id});
+        connect.Execute(" delete from authorbook as ab where ab.authorid=@id;", new {Id = id});
+        connect.Execute("delete from authors where id = @id;", new {Id = id});
     }
 
 }

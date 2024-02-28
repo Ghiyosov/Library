@@ -29,8 +29,10 @@ public class BookServices
     public void DeleteTBooks(int id)
     {
         using var connect = new NpgsqlConnection(_conectionString);
+        connect.Execute("delete from genrebook as gb where gb.bookid=@id;", new { Id = id });
+        connect.Execute("delete from authorbook as ab where ab.bookid=@id;",new { Id = id });
         connect.Execute(
-            "delete from books where id = @id; dalete from authorbook where bookid=books.id; dalete from genrebook where bookid=books.id;", new { Id = id }
+            "delete from books where id = @id;", new { Id = id }
             );
     }
 

@@ -18,3 +18,4 @@ C:\Users\ISMOIL\Desktop\dotNET\ClassTask.1\obj\Debug\net8.0\refint\ClassTask.1.d
 C:\Users\ISMOIL\Desktop\dotNET\ClassTask.1\obj\Debug\net8.0\ClassTask.1.pdb
 C:\Users\ISMOIL\Desktop\dotNET\ClassTask.1\obj\Debug\net8.0\ClassTask.1.genruntimeconfig.cache
 C:\Users\ISMOIL\Desktop\dotNET\ClassTask.1\obj\Debug\net8.0\ref\ClassTask.1.dll
+C:\Users\ISMOIL\Desktop\dotNET\ClassTask.1\obj\Debug\net8.0\ClassTask.1.sourcelink.json

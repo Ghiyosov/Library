@@ -29,6 +29,7 @@ public class GenreServices
      public void DeleteGenre(int id)
     {
         using var connect = new NpgsqlConnection(_conectionString);
-        connect.Execute("delete from authors where id = @id; delete from genrebook where id=genreid", new {Id = id});
+        connect.Execute("delete from genrebook as gb where gb.genreid=@id;", new {Id = id});
+        connect.Execute("delete from authors where id = @id; ", new {Id = id});
     }
 }
